@@ -1,0 +1,56 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]] # colorscheme
+repo = 'ajmwagar/vim-deus'
+hook_add = '''
+  au MyAutoCmd VimEnter * nested colorscheme deus
+'''
+
+# Lint settings start ---------------------------
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+" ファイルオープン時はチェックをしない
+let g:ale_lint_on_enter = 0
+
+let g:ale_statusline_format = ['E%d', 'W%d', 'OK']
+
+" Ctrl-j で次のerror, warning
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" Ctrl-k で前のerror, warning
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" Ctrl-w Ctrl-a で ale を停止
+nmap <silent> <C-w><C-a> <Plug>(ale_toggle)
+
+" ale を別ウィンドウに表示する関数
+function! s:ale_list()
+  let g:ale_open_list = 1
+  call ale#Queue(0, 'lint_file')
+endfunction
+
+" :ALEList or Ctlr-w Ctrl-l でエラー・警告一覧を表示
+command! ALEList call s:ale_list()
+nmap <silent> <C-w><C-l> :ALEList<CR>
+
+" JS ファイルに Lint を設定
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier-eslint']
+
+" ファイル保存時に実行
+let g:ale_fix_on_save = 1
+
+" ローカルの設定ファイルを考慮する
+let g:ale_javascript_prettier_use_local_config = 1
+'''
+
+# Lint settings end -----------------------------

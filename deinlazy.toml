@@ -1,0 +1,14 @@
+#################################
+# markdown preview              #
+#################################
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown','mkd']
+
+[[plugins]]
+repo = 'kannokanno/previm'
+on_ft = ['markdown','mkd']
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_ft = ['markdown','mkd']
