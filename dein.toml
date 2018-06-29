@@ -40,7 +40,7 @@ nmap <silent> <C-w><C-l> :ALEList<CR>
 
 " JS ファイルに Lint を設定
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['eslint', 'flow'],
 \}
 
 let g:ale_fixers = {}
