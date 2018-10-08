@@ -54,3 +54,9 @@ let g:ale_javascript_prettier_use_local_config = 1
 '''
 
 # Lint settings end -----------------------------
+
+# Vue settings start ----------------------------
+[[plugins]]
+repo = 'posva/vim-vue'
+
+# Vue settings end ------------------------------
